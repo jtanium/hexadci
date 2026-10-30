@@ -1,5 +1,5 @@
-name: hex_dci_example
-description: Hex-DCI reference examples in Dart.
+name: hexadci_example
+description: HexaDCI reference examples in Dart.
 publish_to: none
 
 environment:

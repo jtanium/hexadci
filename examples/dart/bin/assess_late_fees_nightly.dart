@@ -4,7 +4,7 @@
 // Prints only the summary.
 import 'dart:io';
 
-import 'package:hex_dci_example/features/assess_late_fees/assess_late_fees.dart';
+import 'package:hexadci_example/features/assess_late_fees/assess_late_fees.dart';
 
 import 'demo_data.dart';
 

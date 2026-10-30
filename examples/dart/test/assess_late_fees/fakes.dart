@@ -1,6 +1,6 @@
-import 'package:hex_dci_example/features/assess_late_fees/assess_late_fees.dart';
-import 'package:hex_dci_example/ports/bank.dart';
-import 'package:hex_dci_example/records/records.dart';
+import 'package:hexadci_example/features/assess_late_fees/assess_late_fees.dart';
+import 'package:hexadci_example/ports/bank.dart';
+import 'package:hexadci_example/records/records.dart';
 
 final today = DateTime.utc(2026, 10, 29);
 

@@ -1,4 +1,4 @@
-## Architecture: Hex-DCI
+## Architecture: HexaDCI
 
 Business logic in this project is organized by business operation, not by technical layer.
 

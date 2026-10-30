@@ -1,8 +1,10 @@
-# Hex-DCI for AI assistants
+# HexaDCI for AI assistants
 
-A guide that teaches AI coding assistants to help people define business rules clearly, and then to write business logic in the Hex-DCI style: a rule sheet and one folder per business operation, a Context that reads like the business process, feature-local roles, listeners and ports at the edges, and tests with fakes.
+*HexaDCI* (pronounced "hex-a-dess-see") is short for hexagonal DCI.
 
-Hex-DCI was developed by Jason Edwards in a production Ruby billing and CRM system between 2015 and 2020, where other developers on the team also built features in it. This package restates the architecture in language-neutral form. **The examples are newly written and contain no code from that system.**
+A guide that teaches AI coding assistants to help people define business rules clearly, and then to write business logic in the HexaDCI style: a rule sheet and one folder per business operation, a Context that reads like the business process, feature-local roles, listeners and ports at the edges, and tests with fakes.
+
+HexaDCI was developed by Jason Edwards in a production Ruby billing and CRM system between 2015 and 2020, where other developers on the team also built features in it. This package restates the architecture in language-neutral form. **The examples are newly written and contain no code from that system.**
 
 ## What's here
 
@@ -20,10 +22,10 @@ Hex-DCI was developed by Jason Edwards in a production Ruby billing and CRM syst
 
 **Claude Code** — copy the folder into your skills directory:
 
-- for one project: `<project>/.claude/skills/hex-dci/`
-- for all your projects: `~/.claude/skills/hex-dci/`
+- for one project: `<project>/.claude/skills/hexadci/`
+- for all your projects: `~/.claude/skills/hexadci/`
 
-**Claude apps** — zip the `hex-dci` folder and upload it as a custom skill.
+**Claude apps** — zip the `hexadci` folder and upload it as a custom skill.
 
 **Other assistants** — paste `AGENTS.snippet.md` into the project's instruction file (`AGENTS.md`, `CLAUDE.md`, `.github/copilot-instructions.md`, `.cursorrules`). Point the assistant at `references/` and `examples/` if it can read files.
 

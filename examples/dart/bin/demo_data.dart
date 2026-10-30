@@ -1,6 +1,6 @@
 // Demo data standing in for the database and the bank, so the entry points run.
-import 'package:hex_dci_example/ports/bank.dart';
-import 'package:hex_dci_example/records/records.dart';
+import 'package:hexadci_example/ports/bank.dart';
+import 'package:hexadci_example/records/records.dart';
 
 final today = DateTime.utc(2026, 10, 29);
 

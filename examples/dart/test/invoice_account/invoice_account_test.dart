@@ -1,9 +1,9 @@
-import 'package:hex_dci_example/features/invoice_account/billable_accounts.dart';
-import 'package:hex_dci_example/features/invoice_account/build_invoice.dart';
-import 'package:hex_dci_example/features/invoice_account/draft_invoice.dart';
-import 'package:hex_dci_example/features/invoice_account/invoice_account.dart';
-import 'package:hex_dci_example/ports/notifier.dart';
-import 'package:hex_dci_example/records/records.dart';
+import 'package:hexadci_example/features/invoice_account/billable_accounts.dart';
+import 'package:hexadci_example/features/invoice_account/build_invoice.dart';
+import 'package:hexadci_example/features/invoice_account/draft_invoice.dart';
+import 'package:hexadci_example/features/invoice_account/invoice_account.dart';
+import 'package:hexadci_example/ports/notifier.dart';
+import 'package:hexadci_example/records/records.dart';
 import 'package:test/test.dart';
 
 class RecordingListener implements InvoiceAccountListener {

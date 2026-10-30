@@ -1,4 +1,4 @@
-# Hex-DCI patterns
+# HexaDCI patterns
 
 Sketches use neutral pseudocode. See `examples/` for complete, idiomatic code in Ruby, Python, and TypeScript.
 
@@ -175,7 +175,7 @@ PlayResult playMove(TableauState board, GameMove move, Categories categories, {r
 
 - **Name the extension after the role** (`MoveBeingJudged`, `InvoiceBeingBilled`). It must be named to be used from another file; an unnamed extension is private to the file that declares it, which tempts you to put it in the context file.
 - Use a **wrapper class** instead when the role holds state of its own, when participants come in kinds with different behavior (extensions dispatch on the static type, so they cannot replace sealed role classes chosen by casting), or in languages without scoped extensions (Ruby, Python, TypeScript, Go).
-- Ruby's refinements are scoped too, but they have sharp edges (no effect through `send` or `method`, file-level activation); prefer wrappers in Ruby, as the original Hex-DCI code did.
+- Ruby's refinements are scoped too, but they have sharp edges (no effect through `send` or `method`, file-level activation); prefer wrappers in Ruby, as the original HexaDCI code did.
 
 ### Where things live in a feature folder
 

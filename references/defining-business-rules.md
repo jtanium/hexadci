@@ -2,7 +2,7 @@
 
 Getting the rules right is usually the hardest part of the work, and the part most often done badly. In most codebases a single business rule is split across a controller conditional, a model callback, a SQL scope, and a view, and nobody can say what the rule *is* without reading all four.
 
-Hex-DCI gives each rule one home. That only helps if someone first states the rule clearly. This file covers how to do that with a person (a new feature), how to do it from code (an existing system), and how to write it down so that the business and the code agree.
+HexaDCI gives each rule one home. That only helps if someone first states the rule clearly. This file covers how to do that with a person (a new feature), how to do it from code (an existing system), and how to write it down so that the business and the code agree.
 
 ## Contents
 
@@ -20,7 +20,7 @@ Hex-DCI gives each rule one home. That only helps if someone first states the ru
 
 ## 1. Vocabulary: process, procedure, rule
 
-These terms come from the original Hex-DCI documentation.
+These terms come from the original HexaDCI documentation.
 
 - **Business process** — what the business does to accomplish something, as a sequence of steps and decisions, stated the way the business would state it. *"To register a merchant, the registration must be valid; if the deposit account is already on file, hold the registration; then tell the customer."* In code: the context's procedure comment and main method.
 - **Business procedure** — the step-by-step instructions for carrying out one step: *"write these fields to the database," "process a payment through the gateway," "send the email."* In code: inside role methods and behind ports.

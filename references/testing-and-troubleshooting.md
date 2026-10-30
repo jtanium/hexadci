@@ -57,7 +57,7 @@ if due.outcome: ...
 ```
 
 - The role stays pure and testable: tests assert on the decision (outcome *and* facts).
-- The context reports each decision to a listener. A decision-logging listener can be switched on **for one feature** — the per-feature logging the original Hex-DCI system had — without touching the rules.
+- The context reports each decision to a listener. A decision-logging listener can be switched on **for one feature** — the per-feature logging the original HexaDCI system had — without touching the rules.
 - Use decision values for rules that matter when something goes wrong: money, eligibility, anything a customer might dispute. Simple rules can stay booleans; do not wrap every condition.
 - A lighter alternative where a decision value is overkill: the context logs after the rule method returns, pulling the facts from role accessors.
 

@@ -1,11 +1,11 @@
 ---
-name: hex-dci
-description: Define business rules clearly and organize business logic as Hex-DCI features — a rule sheet per business operation, one folder per operation, a Context that reads like the business process — casting records into feature-local roles with listeners and ports at the edges when the operation has effects, or a lean pure function returning result values when it doesn't — and table-driven tests. Use when adding or changing business behavior (billing, payouts, onboarding, approvals, reconciliation, notifications, reports with rules); when turning a stakeholder's request into precise rules; when asked what existing code actually does or to untangle rules scattered across controllers, models, jobs, and SQL; when a model or service class is accumulating unrelated methods; or when the user mentions Hex-DCI, DCI, contexts and roles, use cases, business rules, or hexagonal/ports-and-adapters. Works in any object-oriented language; reference examples in Ruby, Python, TypeScript, and Dart/Flutter.
+name: hexadci
+description: Define business rules clearly and organize business logic as HexaDCI features — a rule sheet per business operation, one folder per operation, a Context that reads like the business process — casting records into feature-local roles with listeners and ports at the edges when the operation has effects, or a lean pure function returning result values when it doesn't — and table-driven tests. Use when adding or changing business behavior (billing, payouts, onboarding, approvals, reconciliation, notifications, reports with rules); when turning a stakeholder's request into precise rules; when asked what existing code actually does or to untangle rules scattered across controllers, models, jobs, and SQL; when a model or service class is accumulating unrelated methods; or when the user mentions HexaDCI, DCI, contexts and roles, use cases, business rules, or hexagonal/ports-and-adapters. Works in any object-oriented language; reference examples in Ruby, Python, TypeScript, and Dart/Flutter.
 ---
 
-# Hex-DCI
+# HexaDCI
 
-Hex-DCI combines **DCI** (Data, Context, Interaction) with **hexagonal architecture** (ports and adapters). It makes the *business operation* the unit of code organization.
+HexaDCI combines **DCI** (Data, Context, Interaction) with **hexagonal architecture** (ports and adapters). It makes the *business operation* the unit of code organization.
 
 It was developed by Jason Edwards in a production Ruby billing and CRM system (2015–2020) and used by a team of developers. Its goal is code that a person can read as the business process it implements, change in one place, test without infrastructure, and debug one feature at a time.
 
@@ -13,7 +13,7 @@ It was developed by Jason Edwards in a production Ruby billing and CRM system (2
 
 Systems preserve their mechanisms far more reliably than the reasoning behind them. `ColumnToColumn(:final from, :final to) => from == to` tells you *how* something is computed. It does not tell you that the comparison means *"the pile would go back where it came from"*, that this matters because a move that changes nothing should not cost the player a move, or what would break if it changed. Recovering that from the mechanism is reverse-engineering, and the knowledge it requires usually lives only in someone's head. When they leave, it leaves.
 
-Hex-DCI makes that knowledge part of the code's structure, in four layers that are kept **distinguishable**, so each can be checked against the others:
+HexaDCI makes that knowledge part of the code's structure, in four layers that are kept **distinguishable**, so each can be checked against the others:
 
 | Layer | Question it answers | Where it lives |
 |---|---|---|
@@ -231,7 +231,7 @@ Details, decision logs, and the "before you say done" checklist: `references/tes
 
 - Plain CRUD with no business rules: use the framework's conventions directly.
 - One-off scripts and spikes.
-- Codebases with a different established architecture, unless the user asks to introduce Hex-DCI. Then introduce it one operation at a time, starting with the operation that changes most often.
+- Codebases with a different established architecture, unless the user asks to introduce HexaDCI. Then introduce it one operation at a time, starting with the operation that changes most often.
 
 ## Reference files
 

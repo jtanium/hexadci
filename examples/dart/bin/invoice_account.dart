@@ -4,9 +4,9 @@
 // outcome means here. In a Flutter app the entry point is a Cubit or notifier
 // method called from a widget; it implements InvoiceAccountListener and emits
 // new UI state from its callbacks.
-import 'package:hex_dci_example/features/invoice_account/invoice_account.dart';
-import 'package:hex_dci_example/ports/notifier.dart';
-import 'package:hex_dci_example/records/records.dart';
+import 'package:hexadci_example/features/invoice_account/invoice_account.dart';
+import 'package:hexadci_example/ports/notifier.dart';
+import 'package:hexadci_example/records/records.dart';
 
 Future<void> main() async {
   const account = Account(

@@ -1,8 +1,8 @@
-import 'package:hex_dci_example/features/assess_late_fees/assess_late_fees.dart';
-import 'package:hex_dci_example/features/assess_late_fees/customers.dart';
-import 'package:hex_dci_example/features/assess_late_fees/late_fee_invoices.dart';
-import 'package:hex_dci_example/features/assess_late_fees/retrieve_deposits.dart';
-import 'package:hex_dci_example/ports/bank.dart';
+import 'package:hexadci_example/features/assess_late_fees/assess_late_fees.dart';
+import 'package:hexadci_example/features/assess_late_fees/customers.dart';
+import 'package:hexadci_example/features/assess_late_fees/late_fee_invoices.dart';
+import 'package:hexadci_example/features/assess_late_fees/retrieve_deposits.dart';
+import 'package:hexadci_example/ports/bank.dart';
 import 'package:test/test.dart';
 
 import 'fakes.dart';

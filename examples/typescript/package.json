@@ -1,5 +1,5 @@
 {
-  "name": "hex-dci-example",
+  "name": "hexadci-example",
   "private": true,
   "type": "module",
   "scripts": {

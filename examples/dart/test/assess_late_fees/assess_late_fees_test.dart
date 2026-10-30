@@ -1,5 +1,5 @@
-import 'package:hex_dci_example/features/assess_late_fees/assess_late_fees.dart';
-import 'package:hex_dci_example/records/records.dart';
+import 'package:hexadci_example/features/assess_late_fees/assess_late_fees.dart';
+import 'package:hexadci_example/records/records.dart';
 import 'package:test/test.dart';
 
 import 'fakes.dart';

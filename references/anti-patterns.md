@@ -1,4 +1,4 @@
-# Hex-DCI anti-patterns
+# HexaDCI anti-patterns
 
 ## Drift seen in the original system
 
