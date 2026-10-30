@@ -4,12 +4,15 @@
 
 A guide that teaches AI coding assistants to help people define business rules clearly, and then to write business logic in the HexaDCI style: a rule sheet and one folder per business operation, a Context that reads like the business process, feature-local roles, listeners and ports at the edges, and tests with fakes.
 
-HexaDCI was developed by Jason Edwards in a production Ruby billing and CRM system between 2015 and 2020, where other developers on the team also built features in it. This package restates the architecture in language-neutral form. **The examples are newly written and contain no code from that system.**
+HexaDCI was developed by Jason Edwards between 2015 and 2020 in a production Ruby ERP that ran a payments business — billing, merchant and gateway accounts, account opening and activation — where other developers on the team also built features in it. This package restates the architecture in language-neutral form. **The examples are newly written and contain no code from that system.**
+
+**New to the idea? Start with [`WHY.md`](WHY.md)** — the problem it solves, the theory behind it, what it buys you, and what it costs.
 
 ## What's here
 
 | Path | Purpose |
 |---|---|
+| `WHY.md` | For people: the problem, the theory (DCI, hexagonal architecture, process vs procedure vs rule), the benefits, and the costs. |
 | `SKILL.md` | The skill: core rules and workflows. Loaded by assistants that support Agent Skills. |
 | `references/defining-business-rules.md` | Process vs procedure vs rule, the stakeholder question list, the `RULES.md` template, and extracting rules from existing code. |
 | `references/patterns.md` | Each pattern with rationale and sketches. |

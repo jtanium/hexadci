@@ -7,7 +7,7 @@ description: Define business rules clearly and organize business logic as HexaDC
 
 HexaDCI combines **DCI** (Data, Context, Interaction) with **hexagonal architecture** (ports and adapters). It makes the *business operation* the unit of code organization.
 
-It was developed by Jason Edwards in a production Ruby billing and CRM system (2015–2020) and used by a team of developers. Its goal is code that a person can read as the business process it implements, change in one place, test without infrastructure, and debug one feature at a time.
+It was developed by Jason Edwards in a production Ruby ERP that ran a payments business (2015–2020) and used by a team of developers. Its goal is code that a person can read as the business process it implements, change in one place, test without infrastructure, and debug one feature at a time.
 
 ## Why this exists: don't make the next person reverse-engineer the system
 
