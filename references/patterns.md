@@ -577,7 +577,7 @@ Not everything can live in one feature folder. Two features need the same rule; 
 | **A sub-process** several contexts run as one step | authorize this user for this operation | a **small context of its own**, called as one step of each process | habits |
 | **An implementation** (a "how") | charge a card through the gateway, save a record, parse a bank memo | a shared port, boundary translator, or data-object method | business models, `PaymentProcessor` |
 
-The original Cardinality code tried the first two as generic `traits/` and `habits/` directories with a delegate-everything `Trait` base class, and marked them for removal. What went wrong was not sharing; it was **sharing with no owner**: a grab bag named for the mechanism ("traits") rather than the concept, where anything could be added and nothing said whose rule it was. The forms below keep the useful part.
+The original code tried the first two as generic `traits/` and `habits/` directories with a delegate-everything `Trait` base class, and marked them for removal. What went wrong was not sharing; it was **sharing with no owner**: a grab bag named for the mechanism ("traits") rather than the concept, where anything could be added and nothing said whose rule it was. The forms below keep the useful part.
 
 ### Share only what must agree by definition
 

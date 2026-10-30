@@ -1,0 +1,12 @@
+{
+  "name": "hexadci",
+  "displayName": "HexaDCI",
+  "version": "0.1.0",
+  "description": "Define business rules clearly and organize business logic by business operation: a rule sheet and one folder per operation, a context that reads like the business process, and table-driven tests.",
+  "author": {
+    "name": "Jason Edwards"
+  },
+  "repository": "https://github.com/jtanium/hexadci",
+  "license": "MIT",
+  "keywords": ["business-rules", "architecture", "dci", "hexagonal", "ports-and-adapters", "domain-driven-design"]
+}

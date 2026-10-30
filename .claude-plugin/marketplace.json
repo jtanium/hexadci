@@ -1,0 +1,14 @@
+{
+  "name": "hexadci",
+  "description": "HexaDCI: business rules and business-operation architecture for AI assistants",
+  "owner": {
+    "name": "Jason Edwards"
+  },
+  "plugins": [
+    {
+      "name": "hexadci",
+      "source": "./",
+      "description": "Define business rules clearly and organize business logic by business operation."
+    }
+  ]
+}

@@ -19,16 +19,36 @@ HexaDCI was developed by Jason Edwards between 2015 and 2020 in a production Rub
 | `references/anti-patterns.md` | What to avoid, including drift from the original system and common AI mistakes. |
 | `references/language-notes.md` | How the concepts map to Ruby, Python, TypeScript, Dart/Flutter, Java/Kotlin, C#, and Go. |
 | `examples/{ruby,python,typescript,dart}/` | Two complete features with tests and a `RULES.md` each, written the same way in each language: `invoice_account` (single record) and `assess_late_fees` (batch). Every rule ID in a `RULES.md` is tagged in exactly one place in the code. |
+| `.claude-plugin/` | Plugin and marketplace manifests, so Claude Code can install this repository as a plugin. |
 | `AGENTS.snippet.md` | A condensed version to paste into `AGENTS.md`, `CLAUDE.md`, `.cursorrules`, or similar project instruction files. |
 
 ## Installing
 
-**Claude Code** — copy the folder into your skills directory:
+**Claude Code, as a plugin** (recommended) — in a session:
+
+```
+/plugin marketplace add jtanium/hexadci
+/plugin install hexadci@hexadci
+```
+
+or from your shell:
+
+```bash
+claude plugin marketplace add jtanium/hexadci
+```
+
+```bash
+claude plugin install hexadci@hexadci
+```
+
+Claude uses the skill automatically when the work involves business rules; you can also invoke it as `/hexadci:hexadci`. Updates arrive when the plugin's `version` changes.
+
+**Claude Code, as a plain skill** — clone the repository and copy or link it into a skills directory:
 
 - for one project: `<project>/.claude/skills/hexadci/`
 - for all your projects: `~/.claude/skills/hexadci/`
 
-**Claude apps** — zip the `hexadci` folder and upload it as a custom skill.
+**Claude apps** — zip the folder (without `.git`, `node_modules`, and `.dart_tool`) and upload it as a custom skill.
 
 **Other assistants** — paste `AGENTS.snippet.md` into the project's instruction file (`AGENTS.md`, `CLAUDE.md`, `.github/copilot-instructions.md`, `.cursorrules`). Point the assistant at `references/` and `examples/` if it can read files.
 
@@ -141,3 +161,7 @@ All three are now fixed in all four languages, as rules R8 and R9 plus a revised
 The examples in all four languages were restyled to match as an implementation-only change, and every test file stayed byte-identical. The rule tests passing unchanged is the proof that no rule changed.
 
 **2026-10-29, Python, rules extraction.** A third fresh agent got a small app in which the rules for suspending accounts for non-payment were spread across a controller, a model property and save hook, a SQL query, a nightly job, config, a database constraint and trigger, a payment-gateway sync, a template, and browser JavaScript, along with a Collections request to explain the rules without changing anything. Against a key of 17 planted rules and conflicts, it found 16 fully and 1 partly, all stated in business terms with locations. It found five more real behaviors that were not planted, changed no production code, and pinned current behavior with 24 passing characterization tests. Its feedback led to inventory rows (`I`) distinct from confirmed rules (`R`), questions for the owner (`Q`) distinct from your own decisions (`D`), rule sheets living in the feature folder before any code moves, characterization tests as an explicit exception to the no-database rule, and how to handle rules that only run in templates or the browser.
+
+## License
+
+MIT. See [`LICENSE`](LICENSE).
