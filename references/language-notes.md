@@ -1,0 +1,35 @@
+# Language notes
+
+The patterns depend on three capabilities: wrapping an object, calling a method on an object whose concrete type varies, and passing collaborators in. Every mainstream object-oriented language has all three.
+
+| Concept | Ruby | Python | TypeScript | Dart / Flutter | Java / Kotlin | C# | Go |
+|---|---|---|---|---|---|---|---|
+| Feature folder | module + directory | package | directory + barrel `index.ts` | `lib/features/<operation>/`, main library file exports the public API | package | namespace + folder | package |
+| Context entry point | `def self.call(**)` | `@classmethod call(cls, *, ...)` | `static call({...})` | `static Future<T> call({required ...})` on a class named after the operation | `static call(...)` / companion `operator fun invoke` | `static Call(...)` | `func Call(...)` |
+| Role | wrapper class holding `@record` (refinements are scoped but have sharp edges) | wrapper class holding `self._record` | class with `private readonly record` (no scoped extensions) | a named `extension` on the shared type in a feature file when the role holds no state; otherwise a wrapper class or `extension type` | Kotlin: extension functions in the feature package; Java: wrapper class | extension methods in a feature namespace; otherwise a wrapper class | struct holding the record as a field |
+| Role variants | subclasses or duck-typed classes | duck-typed classes or `Protocol` | classes implementing an `interface` | `sealed class` + `final class` variants | classes implementing an interface / sealed hierarchy | classes implementing an interface | structs satisfying an interface |
+| Listener protocol | duck typing; `NullListener` class | `typing.Protocol`; `NullListener` class | `interface`; `NullListener` class | `abstract interface class`; `const` null implementation | interface; null implementation | interface; null implementation | interface; `nullListener` struct |
+| Ports | injected objects | injected objects | injected objects | injected objects implementing an `abstract interface class` | constructor injection | constructor injection | struct fields of interface type |
+| Record-level vs programming failures | exception hierarchy | exception hierarchy | `Error` subclasses + `instanceof` | `Exception` (caught per record) vs `Error` (always propagates) | checked/unchecked or hierarchy | hierarchy | returned `error` values vs `panic` |
+| Fakes in tests | Minitest/RSpec doubles or small classes | small classes or `unittest.mock` | small objects implementing the interface | small classes implementing the interface; `package:test` | hand-written fakes or Mockito | hand-written fakes or Moq | hand-written fakes |
+
+Notes:
+
+- **Ruby.** The original implementation language. Duck typing makes role variants and listeners lightweight. Avoid `extend` and refinements for roles; wrap.
+- **Python.** Use `typing.Protocol` for listener and port protocols so type checkers can verify them. Keyword-only arguments (`*,`) keep context calls readable.
+- **TypeScript.** Prefer interfaces for listeners and ports. Do not add properties to records with `Object.assign` or spread to "give them a role"; wrap them in a class. When the context must know that only one role variant can pass a filter, a type predicate on the role method (`dueForLateFee(on): this is ChargeableInvoice`) avoids `instanceof` checks.
+- **Dart / Flutter.**
+  - **Name the context after the operation** (`InvoiceAccount`, `AssessLateFees`), not `Context`, which reads badly beside Flutter's `BuildContext`.
+  - **Use `sealed` for role variants.** The compiler then knows every kind of participant, and `switch` over them is checked for completeness.
+  - **Use a named `extension` for roles that only add behavior.** Declared on the shared type in a feature file (`extension MoveBeingJudged on GameMove`), its methods exist only where the feature imports it, so the context can say `move.isOntoItself` about the domain object itself — DCI's role injection, scoped by import. It must be named to be used from another file; never park it at the bottom of the context file. Extensions dispatch on the static type, so participants that come in kinds still need sealed role classes chosen by casting.
+  - **A rule shared by several features** (or a feature and its screen) is a named extension in its own folder named for the concept (`lib/rules/category_sight/`), imported explicitly by each user; never under `lib/features/<one feature>/`, where the others would have to import from a feature. See `patterns.md` §16.
+  - **Use an `extension type` when you want the role to be a distinct type** that exposes *only* what the operation needs (the underlying record's other members are hidden). It is a zero-cost wrapper. Use a class when the role holds anything else, such as a related role or a port.
+  - **Don't use mixins for roles.** They add behavior to the class itself, which is the thing roles exist to avoid.
+  - **Contexts and ports are `async`.** Real ports do I/O; return `Future`s and `await` them in the procedure.
+  - **Lean on `Exception` vs `Error`.** Dart already separates problems with the world from bugs: catch only your record-problem `Exception` subclass per record, and let every `Error` (including a failed `!` null check) propagate.
+  - **To select one role variant without type checks,** give the sealed base a method that returns the narrower role or `null` (`ChargeableInvoice? ifDueForLateFee(on)`) and use `.nonNulls`.
+  - **Pure operations** (game rules, validation) fit Dart well: take an immutable state, cast the request into pure roles with sealed role types, and return a sealed result (`Played(newState)` / `Refused(reason, …)`). Or-patterns keep casting short when several request types share an axis: `ColumnToColumn(:final from, :final cards) || ColumnToReserve(:final from, :final cards) => ColumnTop(from, cards)`. No listener, no exceptions for refusals. Keep shared types (the move types, the board state) in `lib/models/`, not in the feature folder.
+  - **In Flutter, the widget layer is the entry point.** A Cubit, Riverpod notifier, or `ChangeNotifier` method gathers inputs and calls the context; the same object implements the listener interface and emits UI state from its callbacks. Widgets never call roles or ports directly, and business rules never live in `build()`.
+- **Java / Kotlin / C#.** Static types make casting decisions explicit: the context's role field has the interface type, and the constructor chooses the implementation. Kotlin `sealed` hierarchies document all role variants in one place.
+- **Go.** No inheritance is needed. Roles are structs holding the record; variants are different structs satisfying the same interface. Use a `Call` function per feature package.
+- **Functional languages.** The ideas (operation-centric modules, procedure-shaped entry functions, data wrapped per operation, effects behind injected interfaces) still apply, but role objects become records of functions or typeclass instances. Keep the feature folder and the readable procedure; adapt the rest.

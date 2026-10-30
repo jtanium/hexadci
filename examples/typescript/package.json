@@ -1,0 +1,16 @@
+{
+  "name": "hex-dci-example",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-strip-types --test \"test/**/*.test.ts\"",
+    "typecheck": "tsc --noEmit",
+    "demo": "node --experimental-strip-types src/bin/invoice_account.ts",
+    "demo:late-fees": "node --experimental-strip-types src/bin/assess_late_fees_nightly.ts",
+    "demo:late-fees-account": "node --experimental-strip-types src/bin/assess_late_fees_for_account.ts 1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.8.0"
+  }
+}
