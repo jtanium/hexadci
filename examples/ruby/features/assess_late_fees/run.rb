@@ -21,7 +21,7 @@ module AssessLateFees
     #
     # This is a diagnostic, not the guard: by the time it runs, changes have been
     # made. The guards are the bank gate (R5) and duplicate rejection (R8), which
-    # act before anything changes.
+    # act before anything is charged or marked paid.
     def check_totals!
       if @bank_unavailable && (@late_fees.any? || @found_paid.any?)
         raise ImpossibleRun, 'invoices were changed although the bank was unavailable'

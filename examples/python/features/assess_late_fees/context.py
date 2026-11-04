@@ -49,7 +49,8 @@ class Context:
     #   2. send any late-fee notice from an earlier run that did not go out
     #   3. pick the invoices due a late fee today
     #   4. check the bank for every customer with such an invoice, before
-    #      changing anything; if the bank is down, charge nobody tonight
+    #      charging anyone or marking anything paid; if the bank is down, charge
+    #      nobody tonight
     #   5. for each due invoice: if a cleared deposit already covers it, mark it
     #      paid; otherwise add a late fee and tell whoever handles the customer's
     #      billing. One bad invoice does not stop the others
