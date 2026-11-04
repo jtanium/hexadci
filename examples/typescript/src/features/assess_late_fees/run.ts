@@ -19,7 +19,7 @@ export class Run {
    *
    * This is a diagnostic, not the guard: by the time it runs, changes have been
    * made. The guards are the bank gate (R5) and duplicate rejection (R8), which
-   * act before anything changes.
+   * act before anything is charged or marked paid.
    */
   checkTotals(): void {
     if (this.bankUnavailable && (this.lateFees.length > 0 || this.foundPaid.length > 0)) {

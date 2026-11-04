@@ -25,7 +25,7 @@ class Run:
 
         This is a diagnostic, not the guard: by the time it runs, changes have been
         made. The guards are the bank gate (R5) and duplicate rejection (R8), which
-        act before anything changes."""
+        act before anything is charged or marked paid."""
         if self.bank_unavailable and (self.late_fees or self.found_paid):
             raise ImpossibleRun("invoices were changed although the bank was unavailable")
         if any(cents < MINIMUM_FEE_CENTS for _number, cents in self.late_fees):
